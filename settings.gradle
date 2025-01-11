@@ -1,0 +1,4 @@
+rootProject.name = 'star-wars-fanbase'
+
+include 'fanbase-data'
+include 'fanbase-web-api'
