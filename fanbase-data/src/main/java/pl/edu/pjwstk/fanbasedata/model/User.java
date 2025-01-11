@@ -15,12 +15,12 @@ public class User {
     private String login;
     private String password;
     @ManyToOne
-    @JoinColumn(name = "character_id", nullable = false)
+    @JoinColumn(name = "character_id")
     private Character favouriteCharacter;
     @ManyToOne
-    @JoinColumn(name = "planet_id", nullable = false)
+    @JoinColumn(name = "planet_id")
     private Planet favouritePlanet;
     @ManyToOne
-    @JoinColumn (name = "film_id", nullable = false)
+    @JoinColumn (name = "film_id")
     private Film favouriteMovie;
 }

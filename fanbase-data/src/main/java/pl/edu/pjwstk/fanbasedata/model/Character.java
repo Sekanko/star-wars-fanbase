@@ -26,6 +26,7 @@ public class Character {
     private Planet homeworld;
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Species species;
 
 }
