@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.fanbasewebapi.model;
+package pl.edu.pjwstk.fanbasewebapi.modelDTO;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

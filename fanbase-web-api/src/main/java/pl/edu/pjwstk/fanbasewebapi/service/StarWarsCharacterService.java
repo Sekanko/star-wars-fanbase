@@ -6,7 +6,7 @@ import pl.edu.pjwstk.fanbasedata.model.Planet;
 import pl.edu.pjwstk.fanbasedata.model.Species;
 import pl.edu.pjwstk.fanbasedata.model.StarWarsCharacter;
 import pl.edu.pjwstk.fanbasedata.repositories.IRepositoriesCatalog;
-import pl.edu.pjwstk.fanbasewebapi.model.StarWarsCharacterDTO;
+import pl.edu.pjwstk.fanbasewebapi.modelDTO.StarWarsCharacterDTO;
 
 import java.util.List;
 

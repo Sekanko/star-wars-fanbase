@@ -1,6 +1,6 @@
 package pl.edu.pjwstk.fanbasewebapi.service;
 
-import pl.edu.pjwstk.fanbasewebapi.model.StarWarsCharacterDTO;
+import pl.edu.pjwstk.fanbasewebapi.modelDTO.StarWarsCharacterDTO;
 
 import java.util.List;
 
