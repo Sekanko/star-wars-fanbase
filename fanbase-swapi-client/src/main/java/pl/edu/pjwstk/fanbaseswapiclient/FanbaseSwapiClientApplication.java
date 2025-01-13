@@ -10,4 +10,5 @@ public class FanbaseSwapiClientApplication {
 		SpringApplication.run(FanbaseSwapiClientApplication.class, args);
 	}
 
+
 }

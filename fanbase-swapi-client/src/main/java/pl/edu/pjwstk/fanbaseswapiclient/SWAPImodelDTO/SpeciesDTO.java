@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.fanbaseswapiclient.modelDTO;
+package pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO;
 
 import lombok.Data;
 import java.util.List;

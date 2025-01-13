@@ -4,10 +4,10 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import pl.edu.pjwstk.fanbaseswapiclient.modelDTO.FilmDTO;
-import pl.edu.pjwstk.fanbaseswapiclient.modelDTO.PlanetDTO;
-import pl.edu.pjwstk.fanbaseswapiclient.modelDTO.SpeciesDTO;
-import pl.edu.pjwstk.fanbaseswapiclient.modelDTO.StarWarsCharacterDTO;
+import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.FilmDTO;
+import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.PlanetDTO;
+import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.SpeciesDTO;
+import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.StarWarsCharacterDTO;
 
 import java.util.List;
 
