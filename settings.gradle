@@ -2,3 +2,4 @@ rootProject.name = 'star-wars-fanbase'
 
 include('fanbase-data')
 include ('fanbase-web-api')
+include ("fanbase-swapi-client")
