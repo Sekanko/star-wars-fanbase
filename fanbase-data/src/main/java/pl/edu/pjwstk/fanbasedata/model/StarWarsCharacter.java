@@ -7,12 +7,11 @@ import lombok.Setter;
 @Entity
 @Setter
 @Getter
-public class Character {
+public class StarWarsCharacter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String name;
-    private String surname;
     private String birthYear;
     private String eyeColor;
     private Gender gender;

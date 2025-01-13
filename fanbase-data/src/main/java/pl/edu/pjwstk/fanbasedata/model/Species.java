@@ -10,7 +10,7 @@ import lombok.Setter;
 public class Species {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String name;
     private String classification;
     private String designation;

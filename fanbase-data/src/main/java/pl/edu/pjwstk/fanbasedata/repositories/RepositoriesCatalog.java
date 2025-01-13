@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Getter
 @RequiredArgsConstructor
 public class RepositoriesCatalog implements IRepositoriesCatalog {
-    private final CharacterRepository characters;
+    private final StarWarsCharacterRepository starWarsCharacters;
     private final FilmRepository films;
     private final PlanetRepository planets;
     private final SpeciesRepository species;

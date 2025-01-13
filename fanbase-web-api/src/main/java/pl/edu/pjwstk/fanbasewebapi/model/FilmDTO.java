@@ -9,6 +9,7 @@ import java.util.List;
 @Data
 @Accessors(chain = true)
 public class FilmDTO {
+    private Long id;
     private String title;
     private int episode_id;
     private String openingCrawl;

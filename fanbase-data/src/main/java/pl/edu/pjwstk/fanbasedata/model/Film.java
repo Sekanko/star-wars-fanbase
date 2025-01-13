@@ -13,7 +13,7 @@ import java.util.List;
 public class Film {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String title;
     private int episode_id;
     private String openingCrawl;
@@ -24,9 +24,9 @@ public class Film {
     @JoinTable(
             name = "characters_in_films",
             joinColumns = @JoinColumn(name = "film_id", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "character_id" , nullable = false)
+            inverseJoinColumns = @JoinColumn(name = "star_wars_character_id" , nullable = false)
     )
-    List<Character> charactersInMovie;
+    List<StarWarsCharacter> charactersInMovie;
 
     @ManyToMany
     @JoinTable(

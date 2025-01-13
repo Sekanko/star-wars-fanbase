@@ -10,13 +10,13 @@ import lombok.Setter;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nickname;
     private String login;
     private String password;
     @ManyToOne
-    @JoinColumn(name = "character_id")
-    private Character favouriteCharacter;
+    @JoinColumn(name = "star_wars_character_id")
+    private StarWarsCharacter favouriteStarWarsCharacter;
     @ManyToOne
     @JoinColumn(name = "planet_id")
     private Planet favouritePlanet;

@@ -3,7 +3,7 @@ package pl.edu.pjwstk.fanbasedata;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "pl.edu.pjwstk")
 public class FanbaseDataApplication {
 
     public static void main(String[] args) {

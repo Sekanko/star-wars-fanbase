@@ -6,6 +6,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class PlanetDTO {
+    private Long id;
     private String name;
     private int diameter;
     private int rotationPeriod;

@@ -6,6 +6,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class SpeciesDTO {
+    private Long id;
     private String name;
     private String classification;
     private String designation;

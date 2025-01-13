@@ -6,9 +6,9 @@ import pl.edu.pjwstk.fanbasedata.model.Gender;
 
 @Data
 @Accessors(chain = true)
-public class CharacterDTO {
+public class StarWarsCharacterDTO {
+    private Long id;
     private String name;
-    private String surname;
     private String birthYear;
     private String eyeColor;
     private Gender gender;
@@ -16,5 +16,6 @@ public class CharacterDTO {
     private int height;
     private int weight;
     private String skinColor;
-    private int speciesId;
+    private Long homeworldId;
+    private Long speciesId;
 }

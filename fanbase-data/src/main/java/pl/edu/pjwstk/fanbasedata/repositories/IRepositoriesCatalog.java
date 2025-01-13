@@ -1,7 +1,7 @@
 package pl.edu.pjwstk.fanbasedata.repositories;
 
 public interface IRepositoriesCatalog {
-    CharacterRepository getCharacters();
+    StarWarsCharacterRepository getStarWarsCharacters();
     FilmRepository getFilms();
     PlanetRepository getPlanets();
     SpeciesRepository getSpecies();

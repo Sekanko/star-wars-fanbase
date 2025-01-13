@@ -13,7 +13,7 @@ import lombok.Setter;
 public class Planet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String name;
     private int diameter;
     private int rotationPeriod;
