@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Objects;
+
 @Entity
 @Setter
 @Getter
@@ -16,16 +18,18 @@ public class StarWarsCharacter {
     private String eyeColor;
     private Gender gender;
     private String hairColor;
-    private int height;
-    private int weight;
+    private Integer height;
+    private Integer weight;
     private String skinColor;
 
     @ManyToOne
-    @JoinColumn(name = "planet_id", nullable = false)
+    @JoinColumn(name = "planet_id")
     private Planet homeworld;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn()
     private Species species;
+
+    private Long swapiId;
 
 }

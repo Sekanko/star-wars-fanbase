@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @Accessors(chain = true)
-public class StarWarsCharacterDTO {
+public class StarWarsCharacterDTO extends SWDTO {
     private String name;
     private String height;
     private String mass;

@@ -4,7 +4,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class SpeciesDTO {
+public class SpeciesDTO extends SWDTO {
     private String averageHeight;
     private String averageLifespan;
     private String classification;

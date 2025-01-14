@@ -13,27 +13,39 @@ public class StarWarsCharacterMapper implements IMap<StarWarsCharacterDTO, StarW
         var starWarsCharacter = new StarWarsCharacter();
 
         starWarsCharacter.setName(starWarsCharacterDTO.getName());
-        starWarsCharacter.setHeight(Integer.parseInt(starWarsCharacterDTO.getHeight()));
-        starWarsCharacter.setWeight(Integer.parseInt(starWarsCharacterDTO.getMass()));
+        starWarsCharacter.setHeight(parseValueOrDefault(starWarsCharacterDTO.getHeight()));
+        starWarsCharacter.setWeight(parseValueOrDefault(starWarsCharacterDTO.getMass()));
         starWarsCharacter.setHairColor(starWarsCharacterDTO.getHairColor());
         starWarsCharacter.setSkinColor(starWarsCharacterDTO.getSkinColor());
         starWarsCharacter.setEyeColor(starWarsCharacterDTO.getEyeColor());
         starWarsCharacter.setBirthYear(starWarsCharacterDTO.getBirthYear());
 
         switch (starWarsCharacterDTO.getGender()){
-            case "Male":
+            case "male":
                 starWarsCharacter.setGender(Gender.MALE);
                 break;
-            case "Female":
+            case "female":
                 starWarsCharacter.setGender(Gender.FEMALE);
                 break;
-            case "Unknown":
+            case "unknown":
                 starWarsCharacter.setGender(Gender.UNKNOWN);
                 break;
             default:
                 starWarsCharacter.setGender(Gender.NA);
         }
+        starWarsCharacter.setSwapiId(starWarsCharacterDTO.getSwapiId());
 
         return starWarsCharacter;
+    }
+
+    private Integer parseValueOrDefault(String value) {
+        if (value != null && !value.equals("unknown")) {
+            try {
+                return Integer.parseInt(value);
+            } catch (NumberFormatException e) {
+                return null;
+            }
+        }
+        return null;
     }
 }

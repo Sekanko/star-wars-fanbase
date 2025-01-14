@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Objects;
+
 @Entity
 @Setter
 @Getter
@@ -14,12 +16,13 @@ public class Species {
     private String name;
     private String classification;
     private String designation;
-    private double averageHeight;
-    private long averageLifespan;
+    private Double averageHeight;
+    private Long averageLifespan;
     private String language;
 
     @ManyToOne
-    @JoinColumn(name = "planet_id",nullable = false)
+    @JoinColumn(name = "planet_id")
     private Planet originPlanet;
 
+    private Long swapiId;
 }

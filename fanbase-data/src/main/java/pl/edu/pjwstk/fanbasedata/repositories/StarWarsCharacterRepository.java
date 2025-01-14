@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface StarWarsCharacterRepository extends JpaRepository<StarWarsCharacter, Long> {
     List<StarWarsCharacter> findByName(String name);
+    boolean existsBySwapiId(Long swapiId);
+    StarWarsCharacter findBySwapiId(Long swapiId);
 }

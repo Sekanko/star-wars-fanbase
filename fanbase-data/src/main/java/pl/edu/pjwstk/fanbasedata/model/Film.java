@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Setter
@@ -36,4 +37,5 @@ public class Film {
     )
     List<Planet> planetsInMovie;
 
+    private Long swapiId;
 }

@@ -4,7 +4,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class FilmDTO {
+public class FilmDTO extends SWDTO {
     private List<String> characters;
     private String created;
     private String director;

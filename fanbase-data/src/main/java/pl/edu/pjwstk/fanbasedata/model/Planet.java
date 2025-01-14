@@ -7,6 +7,8 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Objects;
+
 @Entity
 @Setter
 @Getter
@@ -15,13 +17,13 @@ public class Planet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private int diameter;
-    private int rotationPeriod;
-    private int orbitalPeriod;
-    private double gravity;
-    private double population;
+    private Integer diameter;
+    private Integer rotationPeriod;
+    private Integer orbitalPeriod;
+    private Double gravity;
+    private Double population;
     private String climate;
     private String terrain;
-    private int surfaceWaterPercentage;
-
+    private Integer surfaceWaterPercentage;
+    private Long swapiId;
 }

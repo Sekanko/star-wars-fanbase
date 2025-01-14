@@ -4,11 +4,9 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.FilmDTO;
-import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.PlanetDTO;
-import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.SpeciesDTO;
-import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.StarWarsCharacterDTO;
+import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -21,45 +19,56 @@ public class SWAPIClient implements ISWAPIClient {
 
     @Override
     public List<StarWarsCharacterDTO> getStarWarsCharacters() {
-        var url = "https://swapi.py4e.com/api/people/";
-        return restTemplate.exchange(
-                url,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<StarWarsCharacterDTO>>() {}
-        ).getBody();
+        return getListOfEntitiesFromSwapi("people", StarWarsCharacterDTO.class);
     }
 
     @Override
     public List<PlanetDTO> getPlanets() {
-        var url = "https://swapi.py4e.com/api/planets/";
-        return restTemplate.exchange(
-                url,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<PlanetDTO>>() {}
-        ).getBody();
+        return getListOfEntitiesFromSwapi("planets", PlanetDTO.class);
     }
 
     @Override
     public List<SpeciesDTO> getSpecies() {
-        var url = "https://swapi.py4e.com/api/species/";
-        return restTemplate.exchange(
-                url,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<SpeciesDTO>>() {}
-        ).getBody();
+        return getListOfEntitiesFromSwapi("species", SpeciesDTO.class);
     }
 
     @Override
     public List<FilmDTO> getFilms() {
-        var url = "https://swapi.py4e.com/api/films/";
-        return restTemplate.exchange(
-                url,
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<FilmDTO>>() {}
-        ).getBody();
+        return getListOfEntitiesFromSwapi("films", FilmDTO.class);
+    }
+
+    private <T extends SWDTO> List<T> getListOfEntitiesFromSwapi(String entityName, Class<T> type){
+        var url = "https://swapi.py4e.com/api/" + entityName + "/";
+        long i = 1;
+        boolean success = true;
+        List<T> entities = new ArrayList<>();
+
+        while (success) {
+            try {
+                if (i == 17){
+//                    break;
+                    i++;
+                    continue;
+                }
+                System.out.println(url + i + '/');
+                var response = restTemplate.exchange(
+                        (url + i + "/"),
+                        HttpMethod.GET,
+                        null,
+                        ParameterizedTypeReference.forType(type));
+                if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
+                    T entity = (T)response.getBody();
+                    entity.setSwapiId(i++);
+                    entities.add(entity);
+                } else {
+                    success = false;
+                }
+            } catch (Exception e) {
+                success = false;
+                e.printStackTrace();
+                System.out.println("Request failed!!!");
+            }
+        }
+        return entities;
     }
 }

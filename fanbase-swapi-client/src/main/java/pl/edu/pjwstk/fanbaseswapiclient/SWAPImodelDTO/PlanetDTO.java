@@ -4,7 +4,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class PlanetDTO {
+public class PlanetDTO extends SWDTO {
     private String climate;
     private String created;
     private String diameter;

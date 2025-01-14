@@ -7,6 +7,7 @@ import pl.edu.pjwstk.fanbasedata.model.Species;
 import pl.edu.pjwstk.fanbasedata.model.StarWarsCharacter;
 import pl.edu.pjwstk.fanbasedata.repositories.IRepositoriesCatalog;
 import pl.edu.pjwstk.fanbasedataupdater.updater.mappers.IMapper;
+import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.PlanetDTO;
 import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.StarWarsCharacterDTO;
 import pl.edu.pjwstk.fanbaseswapiclient.swapiclient.ISWAPIClient;
 
@@ -31,6 +32,8 @@ public class DataUpdater implements IDataUpdater {
 
     @Override
     public void updatePlanet() {
+        client.getPlanets()
+                .forEach(this::savePlanet);
 
     }
 
@@ -46,28 +49,37 @@ public class DataUpdater implements IDataUpdater {
 
     public void saveStarWarsCharacter(StarWarsCharacterDTO starWarsCharacterDTO) {
         var character = map.starWarsCharacter().toEntity(starWarsCharacterDTO);
-        character.setHomeworld(getPlanetFromUrl(starWarsCharacterDTO.getHomeworld()));
-        character.setSpecies(getSpeciesFromUrl(starWarsCharacterDTO.getSpecies().getFirst()));
+
+        var homewordUrl = starWarsCharacterDTO.getHomeworld();
+        if (homewordUrl != null) {
+            var homeworldId = getIdFromUrl(homewordUrl);
+            var homeworldToSave = db.getPlanets().findById(homeworldId).orElse(null);
+            character.setHomeworld(homeworldToSave);
+        }
+
+        var speciesUrl = starWarsCharacterDTO.getSpecies();
+        if (!speciesUrl.isEmpty()) {
+            var speciesId = getIdFromUrl(speciesUrl.getFirst());
+            var species = db.getSpecies().findById(speciesId).orElse(null);
+            character.setSpecies(species);
+        }
+
+        if (db.getStarWarsCharacters().existsBySwapiId(character.getSwapiId())){
+            var existingCharacter = db.getStarWarsCharacters().findBySwapiId(character.getSwapiId());
+            character.setId(existingCharacter.getId());
+        }
         db.getStarWarsCharacters().save(character);
     }
-
-    private Planet getPlanetFromUrl(String planetUrl){
-        String url = planetUrl.substring(0, planetUrl.length()-2);
-        int lastIndex = url.lastIndexOf('/');
-        Long id = Long.parseLong(url.substring(lastIndex + 1));
-        return db.getPlanets().findById(id).orElse(null);
+    public void savePlanet(PlanetDTO planetDTO) {
 
     }
-    private Species getSpeciesFromUrl(String speciesUrl){
-        String url = speciesUrl.substring(0, speciesUrl.length()-2);
-        int lastIndex = url.lastIndexOf('/');
-        Long id = Long.parseLong(url.substring(lastIndex + 1));
-        return db.getSpecies().findById(id).orElse(null);
-    }
-    private Film getFilmFromUrl(String filmUrl){
-        String url = filmUrl.substring(0, filmUrl.length()-2);
-        int lastIndex = url.lastIndexOf('/');
-        Long id = Long.parseLong(url.substring(lastIndex + 1));
-        return db.getFilms().findById(id).orElse(null);
+
+    private Long getIdFromUrl(String url){
+//        System.out.println("Podano: " + url);
+        String entityUrl = url.substring(0, url.length()-1);
+        int lastIndex = entityUrl.lastIndexOf('/');
+        String idAsString = entityUrl.substring(lastIndex+1);
+        Long id = Long.parseLong(idAsString);
+        return id;
     }
 }
