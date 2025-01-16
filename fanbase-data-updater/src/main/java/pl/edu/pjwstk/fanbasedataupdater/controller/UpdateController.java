@@ -17,6 +17,12 @@ public class UpdateController {
     @GetMapping("characters")
     public ResponseEntity<Void> updateCharacters() {
         dataUpdater.updateStarWarsCharacter();
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("planets")
+    public ResponseEntity<Void> updatePlanets() {
+        dataUpdater.updatePlanet();
+        return ResponseEntity.noContent().build();
     }
 }

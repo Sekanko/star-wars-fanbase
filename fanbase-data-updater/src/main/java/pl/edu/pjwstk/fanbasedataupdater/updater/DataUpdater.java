@@ -7,7 +7,9 @@ import pl.edu.pjwstk.fanbasedata.model.Species;
 import pl.edu.pjwstk.fanbasedata.model.StarWarsCharacter;
 import pl.edu.pjwstk.fanbasedata.repositories.IRepositoriesCatalog;
 import pl.edu.pjwstk.fanbasedataupdater.updater.mappers.IMapper;
+import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.FilmDTO;
 import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.PlanetDTO;
+import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.SpeciesDTO;
 import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.StarWarsCharacterDTO;
 import pl.edu.pjwstk.fanbaseswapiclient.swapiclient.ISWAPIClient;
 
@@ -39,12 +41,14 @@ public class DataUpdater implements IDataUpdater {
 
     @Override
     public void updateSpecies() {
-
+        client.getSpecies()
+                .forEach(this::saveSpecies);
     }
 
     @Override
     public void updateFilms() {
-
+        client.getFilms()
+                .forEach(this::saveFilm);
     }
 
     public void saveStarWarsCharacter(StarWarsCharacterDTO starWarsCharacterDTO) {
@@ -71,8 +75,15 @@ public class DataUpdater implements IDataUpdater {
         db.getStarWarsCharacters().save(character);
     }
     public void savePlanet(PlanetDTO planetDTO) {
-
+        var planet = map.planet().toEntity(planetDTO);
+        if (db.getPlanets().existsBySwapiId(planet.getSwapiId())){
+            var existingPlanet = db.getPlanets().findBySwapiId(planet.getSwapiId());
+            planet.setId(existingPlanet.getId());
+        }
+        db.getPlanets().save(planet);
     }
+    public void saveSpecies(SpeciesDTO speciesDTO) {}
+    public void saveFilm(FilmDTO filmDTO) {}
 
     private Long getIdFromUrl(String url){
 //        System.out.println("Podano: " + url);

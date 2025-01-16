@@ -45,11 +45,16 @@ public class SWAPIClient implements ISWAPIClient {
 
         while (success) {
             try {
-                if (i == 17){
+                if (type == StarWarsCharacterDTO.class && i == 17){
 //                    break;
                     i++;
                     continue;
                 }
+
+//                if (i != 1){
+//                    break;
+//                }
+
                 System.out.println(url + i + '/');
                 var response = restTemplate.exchange(
                         (url + i + "/"),

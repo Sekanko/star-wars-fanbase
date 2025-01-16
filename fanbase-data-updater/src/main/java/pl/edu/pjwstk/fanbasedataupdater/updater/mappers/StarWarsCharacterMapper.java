@@ -13,8 +13,8 @@ public class StarWarsCharacterMapper implements IMap<StarWarsCharacterDTO, StarW
         var starWarsCharacter = new StarWarsCharacter();
 
         starWarsCharacter.setName(starWarsCharacterDTO.getName());
-        starWarsCharacter.setHeight(parseValueOrDefault(starWarsCharacterDTO.getHeight()));
-        starWarsCharacter.setWeight(parseValueOrDefault(starWarsCharacterDTO.getMass()));
+        starWarsCharacter.setHeight(NumberPraser.prase(starWarsCharacterDTO.getHeight(), Integer.class));
+        starWarsCharacter.setWeight(NumberPraser.prase(starWarsCharacterDTO.getMass(), Integer.class));
         starWarsCharacter.setHairColor(starWarsCharacterDTO.getHairColor());
         starWarsCharacter.setSkinColor(starWarsCharacterDTO.getSkinColor());
         starWarsCharacter.setEyeColor(starWarsCharacterDTO.getEyeColor());
@@ -38,14 +38,4 @@ public class StarWarsCharacterMapper implements IMap<StarWarsCharacterDTO, StarW
         return starWarsCharacter;
     }
 
-    private Integer parseValueOrDefault(String value) {
-        if (value != null && !value.equals("unknown")) {
-            try {
-                return Integer.parseInt(value);
-            } catch (NumberFormatException e) {
-                return null;
-            }
-        }
-        return null;
-    }
 }

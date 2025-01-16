@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface PlanetRepository extends JpaRepository<Planet, Long> {
     List<Planet> findByName(String name);
+    boolean existsBySwapiId(Long swapiId);
+    Planet findBySwapiId(Long swapiId);
 }
