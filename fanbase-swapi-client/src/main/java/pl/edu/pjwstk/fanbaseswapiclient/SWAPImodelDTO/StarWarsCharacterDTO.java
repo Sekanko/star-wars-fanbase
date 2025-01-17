@@ -1,6 +1,7 @@
 package pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -12,13 +13,13 @@ public class StarWarsCharacterDTO extends SWDTO {
     private String name;
     private String height;
     private String mass;
-    @JsonProperty("hair_color")
+    @SerializedName("hair_color")
     private String hairColor;
-    @JsonProperty("skin_color")
+    @SerializedName("skin_color")
     private String skinColor;
-    @JsonProperty("eye_color")
+    @SerializedName("eye_color")
     private String eyeColor;
-    @JsonProperty("birth_year")
+    @SerializedName("birth_year")
     private String birthYear;
     private String gender;
     private String homeworld;

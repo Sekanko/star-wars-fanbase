@@ -1,6 +1,7 @@
 package pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import java.util.List;
 
@@ -13,13 +14,13 @@ public class PlanetDTO extends SWDTO {
     private List<String> films;
     private String gravity;
     private String name;
-    @JsonProperty("orbital_period")
+    @SerializedName("orbital_period")
     private String orbitalPeriod;
     private String population;
     private List<String> residents;
-    @JsonProperty("rotation_period")
+    @SerializedName("rotation_period")
     private String rotationPeriod;
-    @JsonProperty("surface_water")
+    @SerializedName("surface_water")
     private String surfaceWater;
     private String terrain;
     private String url;

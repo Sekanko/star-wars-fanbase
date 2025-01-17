@@ -21,8 +21,6 @@ public class PlanetMapper implements IMap<PlanetDTO, Planet> {
         planet.setClimate(planetDTO.getClimate());
         planet.setTerrain(planetDTO.getTerrain());
         planet.setSurfaceWaterPercentage(NumberPraser.prase(planetDTO.getSurfaceWater(), Integer.class));
-        planet.setSwapiId(planetDTO.getSwapiId());
-
         return planet;
     }
 

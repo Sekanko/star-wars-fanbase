@@ -53,6 +53,7 @@ public class DataUpdater implements IDataUpdater {
 
     public void saveStarWarsCharacter(StarWarsCharacterDTO starWarsCharacterDTO) {
         var character = map.starWarsCharacter().toEntity(starWarsCharacterDTO);
+        character.setSwapiId(getIdFromUrl(starWarsCharacterDTO.getUrl()));
 
         var homewordUrl = starWarsCharacterDTO.getHomeworld();
         if (homewordUrl != null) {
@@ -76,6 +77,7 @@ public class DataUpdater implements IDataUpdater {
     }
     public void savePlanet(PlanetDTO planetDTO) {
         var planet = map.planet().toEntity(planetDTO);
+        planet.setSwapiId(getIdFromUrl(planetDTO.getUrl()));
         if (db.getPlanets().existsBySwapiId(planet.getSwapiId())){
             var existingPlanet = db.getPlanets().findBySwapiId(planet.getSwapiId());
             planet.setId(existingPlanet.getId());

@@ -14,15 +14,33 @@ import pl.edu.pjwstk.fanbasedataupdater.updater.IDataUpdater;
 public class UpdateController {
     private final IDataUpdater dataUpdater;
 
+    @GetMapping("all")
+    public ResponseEntity<Void> updateAll( ) {
+        dataUpdater.updatePlanet();
+        dataUpdater.updateSpecies();
+        dataUpdater.updateStarWarsCharacter();
+        dataUpdater.updateFilms();
+        return ResponseEntity.noContent().build();
+    }
+
     @GetMapping("characters")
     public ResponseEntity<Void> updateCharacters() {
         dataUpdater.updateStarWarsCharacter();
         return ResponseEntity.noContent().build();
     }
-
     @GetMapping("planets")
     public ResponseEntity<Void> updatePlanets() {
         dataUpdater.updatePlanet();
+        return ResponseEntity.noContent().build();
+    }
+    @GetMapping("species")
+    public ResponseEntity<Void> updateSpecies() {
+        dataUpdater.updateSpecies();
+        return ResponseEntity.noContent().build();
+    }
+    @GetMapping("films")
+    public ResponseEntity<Void> updateFilms() {
+        dataUpdater.updateFilms();
         return ResponseEntity.noContent().build();
     }
 }

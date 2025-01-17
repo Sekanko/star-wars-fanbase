@@ -1,11 +1,15 @@
 package pl.edu.pjwstk.fanbaseswapiclient.swapiclient;
 
-import org.springframework.core.ParameterizedTypeReference;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.*;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,39 +43,32 @@ public class SWAPIClient implements ISWAPIClient {
 
     private <T extends SWDTO> List<T> getListOfEntitiesFromSwapi(String entityName, Class<T> type){
         var url = "https://swapi.py4e.com/api/" + entityName + "/";
-        long i = 1;
         boolean success = true;
         List<T> entities = new ArrayList<>();
+        Gson gson = new Gson();
+        Type listType = TypeToken.getParameterized(List.class, type).getType();
 
         while (success) {
-            try {
-                if (type == StarWarsCharacterDTO.class && i == 17){
-//                    break;
-                    i++;
-                    continue;
-                }
+            var response = restTemplate.exchange(
+                    (url),
+                    HttpMethod.GET,
+                    null,
+                    String.class);
 
-//                if (i != 1){
-//                    break;
-//                }
 
-                System.out.println(url + i + '/');
-                var response = restTemplate.exchange(
-                        (url + i + "/"),
-                        HttpMethod.GET,
-                        null,
-                        ParameterizedTypeReference.forType(type));
-                if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
-                    T entity = (T)response.getBody();
-                    entity.setSwapiId(i++);
-                    entities.add(entity);
-                } else {
+            if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
+                var entity = response.getBody();
+                JsonObject jsonObject = gson.fromJson(response.getBody(), JsonObject.class);
+                if (jsonObject.has("next") && jsonObject.get("next").isJsonNull()) {
                     success = false;
+                } else {
+                    url = jsonObject.get("next").getAsString();
                 }
-            } catch (Exception e) {
+                JsonArray jsonArray = jsonObject.getAsJsonArray("results");
+                List<T> results = gson.fromJson(jsonArray, listType);
+                entities.addAll(results);
+            } else {
                 success = false;
-                e.printStackTrace();
-                System.out.println("Request failed!!!");
             }
         }
         return entities;

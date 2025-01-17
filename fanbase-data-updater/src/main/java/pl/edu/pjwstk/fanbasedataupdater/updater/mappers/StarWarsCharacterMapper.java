@@ -33,8 +33,6 @@ public class StarWarsCharacterMapper implements IMap<StarWarsCharacterDTO, StarW
             default:
                 starWarsCharacter.setGender(Gender.NA);
         }
-        starWarsCharacter.setSwapiId(starWarsCharacterDTO.getSwapiId());
-
         return starWarsCharacter;
     }
 

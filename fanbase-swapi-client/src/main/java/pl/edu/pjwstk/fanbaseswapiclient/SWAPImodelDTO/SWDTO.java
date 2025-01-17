@@ -5,7 +5,5 @@ import lombok.Data;
 
 @Data
 public class SWDTO {
-    @JsonIgnore
-    private Long swapiId;
 
 }
