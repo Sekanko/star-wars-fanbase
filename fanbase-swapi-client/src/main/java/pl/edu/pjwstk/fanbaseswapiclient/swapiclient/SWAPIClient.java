@@ -7,7 +7,7 @@ import com.google.gson.reflect.TypeToken;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.*;
+import pl.edu.pjwstk.fanbaseswapiclient.Contract.*;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO;
+package pl.edu.pjwstk.fanbaseswapiclient.Contract;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

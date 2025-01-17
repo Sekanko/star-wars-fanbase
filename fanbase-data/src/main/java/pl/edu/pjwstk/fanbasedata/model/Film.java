@@ -16,10 +16,10 @@ public class Film {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private int episode_id;
+    private int episodeId;
     private String openingCrawl;
     private String director;
-    private Date release_date;
+    private Date releaseDate;
 
     @ManyToMany
     @JoinTable(

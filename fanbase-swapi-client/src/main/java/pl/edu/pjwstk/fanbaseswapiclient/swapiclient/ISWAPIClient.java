@@ -1,9 +1,9 @@
 package pl.edu.pjwstk.fanbaseswapiclient.swapiclient;
 
-import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.FilmDTO;
-import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.PlanetDTO;
-import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.SpeciesDTO;
-import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.StarWarsCharacterDTO;
+import pl.edu.pjwstk.fanbaseswapiclient.Contract.FilmDTO;
+import pl.edu.pjwstk.fanbaseswapiclient.Contract.PlanetDTO;
+import pl.edu.pjwstk.fanbaseswapiclient.Contract.SpeciesDTO;
+import pl.edu.pjwstk.fanbaseswapiclient.Contract.StarWarsCharacterDTO;
 
 import java.util.List;
 

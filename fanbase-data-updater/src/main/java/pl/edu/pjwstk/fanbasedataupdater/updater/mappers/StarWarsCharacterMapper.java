@@ -4,7 +4,7 @@ package pl.edu.pjwstk.fanbasedataupdater.updater.mappers;
 import org.springframework.stereotype.Component;
 import pl.edu.pjwstk.fanbasedata.model.Gender;
 import pl.edu.pjwstk.fanbasedata.model.StarWarsCharacter;
-import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.StarWarsCharacterDTO;
+import pl.edu.pjwstk.fanbaseswapiclient.Contract.StarWarsCharacterDTO;
 
 @Component
 public class StarWarsCharacterMapper implements IMap<StarWarsCharacterDTO, StarWarsCharacter> {

@@ -1,16 +1,12 @@
 package pl.edu.pjwstk.fanbasedataupdater.updater;
 
 import org.springframework.stereotype.Service;
-import pl.edu.pjwstk.fanbasedata.model.Film;
-import pl.edu.pjwstk.fanbasedata.model.Planet;
-import pl.edu.pjwstk.fanbasedata.model.Species;
-import pl.edu.pjwstk.fanbasedata.model.StarWarsCharacter;
 import pl.edu.pjwstk.fanbasedata.repositories.IRepositoriesCatalog;
 import pl.edu.pjwstk.fanbasedataupdater.updater.mappers.IMapper;
-import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.FilmDTO;
-import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.PlanetDTO;
-import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.SpeciesDTO;
-import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.StarWarsCharacterDTO;
+import pl.edu.pjwstk.fanbaseswapiclient.Contract.FilmDTO;
+import pl.edu.pjwstk.fanbaseswapiclient.Contract.PlanetDTO;
+import pl.edu.pjwstk.fanbaseswapiclient.Contract.SpeciesDTO;
+import pl.edu.pjwstk.fanbaseswapiclient.Contract.StarWarsCharacterDTO;
 import pl.edu.pjwstk.fanbaseswapiclient.swapiclient.ISWAPIClient;
 
 @Service

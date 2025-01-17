@@ -2,7 +2,7 @@ package pl.edu.pjwstk.fanbasedataupdater.updater.mappers;
 
 import org.springframework.stereotype.Component;
 import pl.edu.pjwstk.fanbasedata.model.Planet;
-import pl.edu.pjwstk.fanbaseswapiclient.SWAPImodelDTO.PlanetDTO;
+import pl.edu.pjwstk.fanbaseswapiclient.Contract.PlanetDTO;
 
 @Component
 public class PlanetMapper implements IMap<PlanetDTO, Planet> {
