@@ -80,7 +80,24 @@ public class DataUpdater implements IDataUpdater {
         }
         db.getPlanets().save(planet);
     }
-    public void saveSpecies(SpeciesDTO speciesDTO) {}
+    public void saveSpecies(SpeciesDTO speciesDTO) {
+        var species = map.species().toEntity(speciesDTO);
+        species.setSwapiId(getIdFromUrl(speciesDTO.getUrl()));
+
+        var originPlanetUrl = speciesDTO.getHomeworld();
+        if (originPlanetUrl != null){
+            var originPlanetId = getIdFromUrl(originPlanetUrl);
+            var originPlanet = db.getPlanets().findById(originPlanetId).orElse(null);
+            species.setOriginPlanet(originPlanet);
+        }
+        species.setSwapiId(getIdFromUrl(speciesDTO.getUrl()));
+
+        if (db.getSpecies().existsBySwapiId(species.getSwapiId())){
+            var existingSpecies = db.getSpecies().findBySwapiId(species.getSwapiId());
+            species.setId(existingSpecies.getId());
+        }
+        db.getSpecies().save(species);
+    }
     public void saveFilm(FilmDTO filmDTO) {}
 
     private Long getIdFromUrl(String url){
