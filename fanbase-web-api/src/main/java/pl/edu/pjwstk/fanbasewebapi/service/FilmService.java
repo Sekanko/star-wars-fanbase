@@ -21,7 +21,7 @@ public class FilmService implements IFilmService {
     }
 
     @Override
-    public List<FilmDTO> getByTitle(String title) {
+    public List<FilmDTO> getFilmsByTitle(String title) {
         return mapFromListOfFilms(db.getFilms().findByTitle(title));
     }
 

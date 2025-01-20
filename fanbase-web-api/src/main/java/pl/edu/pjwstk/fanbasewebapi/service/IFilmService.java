@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface IFilmService extends IAlterDataService<FilmDTO> {
     List<FilmDTO> getAllFilms();
-    List<FilmDTO> getByTitle(String title);
+    List<FilmDTO> getFilmsByTitle(String title);
 }
