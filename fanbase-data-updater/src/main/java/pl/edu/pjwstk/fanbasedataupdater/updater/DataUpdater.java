@@ -1,7 +1,6 @@
 package pl.edu.pjwstk.fanbasedataupdater.updater;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import pl.edu.pjwstk.fanbasedata.model.Planet;
 import pl.edu.pjwstk.fanbasedata.model.StarWarsCharacter;
 import pl.edu.pjwstk.fanbasedata.repositories.IRepositoriesCatalog;
@@ -12,9 +11,7 @@ import pl.edu.pjwstk.fanbaseswapiclient.Contract.SpeciesDTO;
 import pl.edu.pjwstk.fanbaseswapiclient.Contract.StarWarsCharacterDTO;
 import pl.edu.pjwstk.fanbaseswapiclient.swapiclient.ISWAPIClient;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Service

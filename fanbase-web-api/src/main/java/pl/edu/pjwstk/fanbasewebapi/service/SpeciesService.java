@@ -8,7 +8,6 @@ import pl.edu.pjwstk.fanbasedata.repositories.RepositoriesCatalog;
 import pl.edu.pjwstk.fanbasewebapi.modelDTO.SpeciesDTO;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

@@ -102,5 +102,4 @@ public class StarWarsCharacterService implements ICharacterService {
     private static List<StarWarsCharacterDTO> mapFromListOfStarWarsCharacters(List<StarWarsCharacter> characters) {
         return characters.stream().map(StarWarsCharacterService::mapFromCharacter).toList();
     }
-
 }

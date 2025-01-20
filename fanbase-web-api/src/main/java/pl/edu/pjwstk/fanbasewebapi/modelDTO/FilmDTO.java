@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -12,11 +11,11 @@ import java.util.Set;
 public class FilmDTO {
     private Long id;
     private String title;
-    private int episode_id;
+    private int episodeId;
     private String openingCrawl;
     private String director;
-    private Date release_date;
-    Set<Integer> charaterIds;
-    Set<Integer> planetsIds;
-    private Long swqpiId;
+    private Date releaseDate;
+    Set<Long> charaterIds;
+    Set<Long> planetsIds;
+    private Long swapiId;
 }

@@ -4,11 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.edu.pjwstk.fanbasedata.model.Planet;
 import pl.edu.pjwstk.fanbasedata.repositories.IRepositoriesCatalog;
-import pl.edu.pjwstk.fanbasedata.repositories.PlanetRepository;
 import pl.edu.pjwstk.fanbasewebapi.modelDTO.PlanetDTO;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
