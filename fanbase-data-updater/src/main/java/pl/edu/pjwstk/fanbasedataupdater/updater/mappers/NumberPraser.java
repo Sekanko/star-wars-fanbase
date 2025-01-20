@@ -14,10 +14,10 @@ public class NumberPraser {
                     throw new IllegalArgumentException("Unsupported type: " + type.getSimpleName());
                 }
             } catch (NumberFormatException e) {
-                return null;
+                return prase("-1", type);
             }
         } else {
-            return null;
+            return prase("-1", type);
         }
     }
 }

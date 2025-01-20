@@ -84,7 +84,7 @@ public class SpeciesService implements ISpeciesService {
                 .setLanguage(species.getLanguage())
                 .setClassification(species.getClassification())
                 .setDesignation(species.getDesignation())
-                .setOriginPlanetId(species.getOriginPlanet().getId())
+                .setOriginPlanetId(species.getOriginPlanet() != null ? species.getOriginPlanet().getId() : null )
                 .setSwqpiId(species.getSwapiId());
     }
 

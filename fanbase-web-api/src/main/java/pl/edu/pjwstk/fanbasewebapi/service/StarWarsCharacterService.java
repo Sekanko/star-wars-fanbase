@@ -85,6 +85,7 @@ public class StarWarsCharacterService implements ICharacterService {
         return character;
     }
     private static StarWarsCharacterDTO mapFromCharacter(StarWarsCharacter character) {
+
         return new StarWarsCharacterDTO()
                 .setId(character.getId())
                 .setName(character.getName())
@@ -94,8 +95,8 @@ public class StarWarsCharacterService implements ICharacterService {
                 .setWeight(character.getWeight())
                 .setHairColor(character.getHairColor())
                 .setGender(character.getGender())
-                .setHomeworldId(character.getHomeworld().getId())
-                .setSpeciesId(character.getSpecies().getId())
+                .setHomeworldId(character.getHomeworld() != null ? character.getHomeworld().getId() : null )
+                .setSpeciesId(character.getSpecies() != null ? character.getSpecies().getId() : null )
                 .setSkinColor(character.getSkinColor())
                 .setSwqpiId(character.getSwapiId());
     }

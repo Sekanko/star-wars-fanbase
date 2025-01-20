@@ -22,7 +22,8 @@ public class SearchController {
     public ResponseEntity<List<StarWarsCharacterDTO>> getAllStarWarsCharacters() {
         return new ResponseEntity<>(this.servicesCatalog.getStarWarsCharacterService().getAllCharacters(), HttpStatus.OK);
     }
-    @GetMapping("star-wars-character/{name}")
+
+    @GetMapping("star-wars-character/name/{name}")
     public ResponseEntity<List<StarWarsCharacterDTO>> getStarWarsCharacterByName(@PathVariable String name) {
         return new ResponseEntity<>(this.servicesCatalog.getStarWarsCharacterService().getCharactersByName(name), HttpStatus.OK);
     }
