@@ -13,5 +13,6 @@ public class UserDTO {
     private Long favouriteCharacterId;
     private Long favouritePlanetId;
     private Long favouriteMovieId;
+    private Long swqpiId;
 
 }

@@ -16,4 +16,6 @@ public class PlanetDTO {
     private String climate;
     private String terrain;
     private int surfaceWaterPercentage;
+    private Long swqpiId;
+
 }

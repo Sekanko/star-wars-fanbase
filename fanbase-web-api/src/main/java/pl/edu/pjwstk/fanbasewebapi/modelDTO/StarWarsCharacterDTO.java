@@ -18,4 +18,6 @@ public class StarWarsCharacterDTO {
     private String skinColor;
     private Long homeworldId;
     private Long speciesId;
+    private Long swqpiId;
+
 }

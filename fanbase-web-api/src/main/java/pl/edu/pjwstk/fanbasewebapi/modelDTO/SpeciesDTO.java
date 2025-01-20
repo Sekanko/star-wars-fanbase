@@ -14,4 +14,6 @@ public class SpeciesDTO {
     private long averageLifespan;
     private String language;
     private int originPlanetId;
+    private Long swqpiId;
+
 }

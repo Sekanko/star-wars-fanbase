@@ -42,16 +42,18 @@ public class StarWarsCharacterService implements ICharacterService {
         if (character != null) {
             setForeignObjects(character, dtoEntity);
             db.getStarWarsCharacters().save(getStarWarsCharacterFromDto(dtoEntity, character));
+            return mapFromCharacter(character);
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override
     public Long save(StarWarsCharacterDTO dtoCharacter) {
         StarWarsCharacter character = getStarWarsCharacterFromDto(dtoCharacter);
         setForeignObjects(character, dtoCharacter);
-        var p = db.getStarWarsCharacters().save(character);
-        return p.getId();
+        var ch = db.getStarWarsCharacters().save(character);
+        return ch.getId();
     }
 
     private void setForeignObjects(StarWarsCharacter character, StarWarsCharacterDTO dtoCharacter) {
@@ -78,6 +80,7 @@ public class StarWarsCharacterService implements ICharacterService {
         character.setHeight(dtoCharacter.getHeight());
         character.setWeight(dtoCharacter.getWeight());
         character.setSkinColor(dtoCharacter.getSkinColor());
+        character.setSwapiId(dtoCharacter.getSwqpiId());
 
         return character;
     }
@@ -92,7 +95,9 @@ public class StarWarsCharacterService implements ICharacterService {
                 .setHairColor(character.getHairColor())
                 .setGender(character.getGender())
                 .setHomeworldId(character.getHomeworld().getId())
-                .setSpeciesId(character.getSpecies().getId());
+                .setSpeciesId(character.getSpecies().getId())
+                .setSkinColor(character.getSkinColor())
+                .setSwqpiId(character.getSwapiId());
     }
     private static List<StarWarsCharacterDTO> mapFromListOfStarWarsCharacters(List<StarWarsCharacter> characters) {
         return characters.stream().map(StarWarsCharacterService::mapFromCharacter).toList();

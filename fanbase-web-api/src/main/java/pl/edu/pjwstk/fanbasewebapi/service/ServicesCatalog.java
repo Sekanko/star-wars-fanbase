@@ -9,4 +9,5 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ServicesCatalog implements IServicesCatalog {
     private final StarWarsCharacterService starWarsCharacterService;
+    private final PlanetService planetService;
 }
