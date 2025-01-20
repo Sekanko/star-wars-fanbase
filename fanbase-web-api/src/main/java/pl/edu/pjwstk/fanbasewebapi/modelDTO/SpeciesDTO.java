@@ -13,7 +13,7 @@ public class SpeciesDTO {
     private double averageHeight;
     private long averageLifespan;
     private String language;
-    private int originPlanetId;
+    private Long originPlanetId;
     private Long swqpiId;
 
 }

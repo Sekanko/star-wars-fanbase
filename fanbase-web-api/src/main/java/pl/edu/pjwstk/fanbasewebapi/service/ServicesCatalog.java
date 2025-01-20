@@ -10,4 +10,5 @@ import org.springframework.stereotype.Service;
 public class ServicesCatalog implements IServicesCatalog {
     private final StarWarsCharacterService starWarsCharacterService;
     private final PlanetService planetService;
+    private final SpeciesService speciesService;
 }
