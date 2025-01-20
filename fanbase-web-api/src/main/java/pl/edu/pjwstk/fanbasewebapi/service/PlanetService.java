@@ -17,18 +17,18 @@ public class PlanetService implements IPlanetService {
 
     @Override
     public List<PlanetDTO> getAllPlanets() {
-        return List.of();
+        return mapFromPlanets(db.getPlanets().findAll());
     }
 
     @Override
     public List<PlanetDTO> getPlanetsByName(String planetName) {
-        return List.of();
+        return mapFromPlanets(db.getPlanets().findByName(planetName));
     }
 
     @Override
     public PlanetDTO delete(Long id) {
         var planet = db.getPlanets().findById(id).orElse(null);
-        
+
         if (planet != null){
             db.getPlanets().delete(planet);
             return mapFromPlanet(planet);
