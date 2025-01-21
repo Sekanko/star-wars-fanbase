@@ -1,10 +1,41 @@
-planetPage.html<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Star Wars Character</title>
+    <base th:href="@{http://localhost:8080/fanbase/}" />
 </head>
 <body>
+<div id="root">
+    <h1>Character Details</h1>
+    <div>
+        <p><strong>Name:</strong> <span th:text="${character.name}"></span></p>
+        <p><strong>Birth Year:</strong> <span th:text="${character.birthYear}"></span></p>
+        <p><strong>Eye Color:</strong> <span th:text="${character.eyeColor}"></span></p>
+        <p><strong>Gender:</strong> <span th:text="${character.gender}"></span></p>
+        <p><strong>Hair Color:</strong> <span th:text="${character.hairColor}"></span></p>
+        <p>
+            <strong>Height:</strong>
+            <span th:text="${character.height == -1 ? 'No data/does not apply' : character.height}"></span>
+        </p>
+        <p>
+            <strong>Weight:</strong>
+            <span th:text="${character.weight == -1 ? 'No data/does not apply' : character.weight}"></span>
+        </p>
+        <p>
+            <strong>Skin Color:</strong>
+            <span th:text="${character.skinColor}"></span>
+        </p>
+        <p th:if="${homeword != null}">
+            <strong>Homeword:</strong>
+            <a th:href="@{planet/id/{id}(id=${homeword.getId()})}" th:text="${homeword.getName()}"></a>
+        </p>
+        <p th:if="${species != null}">
+            <strong>Species:</strong>
+            <a th:href="@{species/id/{id}(id=${species.getId()})}" th:text="${species.getName()}"></a>
+        </p>
+    </div>
 
+</div>
 </body>
 </html>

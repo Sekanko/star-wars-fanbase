@@ -4,6 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.edu.pjwstk.fanbaseclient.modelDTO.PlanetDTO;
+import pl.edu.pjwstk.fanbaseclient.modelDTO.SpeciesDTO;
+import pl.edu.pjwstk.fanbaseclient.modelDTO.StarWarsCharacterDTO;
 import pl.edu.pjwstk.fanbaseclient.service.ViewService;
 
 @Controller
@@ -37,7 +40,33 @@ public class ViewController {
 
     @GetMapping("character/id/{id}")
     public String characterPage(@PathVariable Long id, Model model) {
-        var character = viewService.
+        StarWarsCharacterDTO character = viewService.getStarWarsCharacterById(id);
+        PlanetDTO planet = null;
+        Long homewordId = character.getHomeworldId();
+
+        if (homewordId != null) {
+            planet = viewService.getPlanetById(homewordId);
+        }
+        SpeciesDTO species = null;
+
+        Long speciesId = character.getSpeciesId();
+        if (speciesId != null) {
+            species = viewService.getSpeciesById(speciesId);
+        }
+        model.addAttribute("character", character);
+        model.addAttribute("homeword", planet);
+        model.addAttribute("species", species);
+
+        return "characterPage";
+    }
+
+    @GetMapping("planet/id/{id}")
+    public String planetPage(@PathVariable Long id, Model model) {
+        PlanetDTO planet = viewService.getPlanetById(id);
+
+        model.addAttribute("planet", planet);
+        return "planetPage";
+
     }
 
 }

@@ -44,7 +44,7 @@ public class ViewService {
     public StarWarsCharacterDTO getStarWarsCharacterById(Long id) {
         StarWarsCharacterDTO character = restClient
                 .get()
-                .uri()
+                .uri("/search/star-wars-character/id/" + id)
                 .retrieve()
                 .body(StarWarsCharacterDTO.class);
         if (character == null) {
@@ -79,6 +79,18 @@ public class ViewService {
         return planets;
     }
 
+    public PlanetDTO getPlanetById(Long id) {
+        PlanetDTO planet = restClient
+                .get()
+                .uri("search/planet/id/" + id)
+                .retrieve()
+                .body(PlanetDTO.class);
+        if (planet == null) {
+            return null;
+        }
+        return planet;
+    }
+
     public List<SpeciesDTO> getSpecies() {
         List<SpeciesDTO> species = restClient
                 .get()
@@ -98,6 +110,18 @@ public class ViewService {
                 .retrieve()
                 .body(new ParameterizedTypeReference<>() {});
         if (species == null || species.isEmpty() ) {
+            return null;
+        }
+        return species;
+    }
+
+    public SpeciesDTO getSpeciesById(Long id) {
+        SpeciesDTO species = restClient
+                .get()
+                .uri("search/species/id/" + id)
+                .retrieve()
+                .body(SpeciesDTO.class);
+        if (species == null) {
             return null;
         }
         return species;
@@ -125,5 +149,17 @@ public class ViewService {
             return null;
         }
         return films;
+    }
+
+    public FilmDTO getFilmById(Long id) {
+        FilmDTO film = restClient
+                .get()
+                .uri("search/film/id/" + id)
+                .retrieve()
+                .body(FilmDTO.class);
+        if (film == null) {
+            return null;
+        }
+        return film;
     }
 }

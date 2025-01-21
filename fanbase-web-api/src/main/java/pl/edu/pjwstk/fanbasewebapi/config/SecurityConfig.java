@@ -20,9 +20,6 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable
                 )
-                .sessionManagement(session ->
-                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                )
                 .authorizeHttpRequests((authorizeRequests) -> authorizeRequests
                         .requestMatchers("/user/**")
                         .permitAll()
