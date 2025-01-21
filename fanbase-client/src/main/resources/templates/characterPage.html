@@ -34,6 +34,14 @@
             <strong>Species:</strong>
             <a th:href="@{species/id/{id}(id=${species.getId()})}" th:text="${species.getName()}"></a>
         </p>
+        <p th:if="${homeword == null}">
+            <strong>Homeword:</strong>
+            <span>No data/does not apply</span>
+        </p>
+        <p th:if="${species == null}">
+            <strong>Species:</strong>
+            <span>No data/does not apply</span>
+        </p>
     </div>
 
 </div>

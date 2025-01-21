@@ -4,10 +4,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.edu.pjwstk.fanbaseclient.modelDTO.FilmDTO;
 import pl.edu.pjwstk.fanbaseclient.modelDTO.PlanetDTO;
 import pl.edu.pjwstk.fanbaseclient.modelDTO.SpeciesDTO;
 import pl.edu.pjwstk.fanbaseclient.modelDTO.StarWarsCharacterDTO;
 import pl.edu.pjwstk.fanbaseclient.service.ViewService;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Controller
 @RequiredArgsConstructor
@@ -67,6 +71,42 @@ public class ViewController {
         model.addAttribute("planet", planet);
         return "planetPage";
 
+    }
+
+    @GetMapping("species/id/{id}")
+    public String speciesPage(@PathVariable Long id, Model model) {
+        SpeciesDTO species = viewService.getSpeciesById(id);
+
+        PlanetDTO planet = null;
+
+        Long originPlanetId = species.getOriginPlanetId();
+        if (originPlanetId != null) {
+            planet = viewService.getPlanetById(originPlanetId);
+        }
+        model.addAttribute("species", species);
+        model.addAttribute("originPlanet", planet);
+        return "speciesPage";
+    }
+
+    @GetMapping("film/id/{id}")
+    public String filmPage(@PathVariable Long id, Model model) {
+        FilmDTO film = viewService.getFilmById(id);
+        Set<StarWarsCharacterDTO> charactersInFilm = new HashSet<>();
+
+        film.getCharaterIds().forEach(characterId -> {
+            StarWarsCharacterDTO character = viewService.getStarWarsCharacterById(characterId);
+            charactersInFilm.add(character);
+        });
+
+        Set<PlanetDTO> planetsInFilm = new HashSet<>();
+        film.getPlanetsIds().forEach(planetId -> {
+            PlanetDTO planet = viewService.getPlanetById(planetId);
+            planetsInFilm.add(planet);
+        });
+        model.addAttribute("film", film);
+        model.addAttribute("charactersInFilm", charactersInFilm);
+        model.addAttribute("planetsInFilm", planetsInFilm);
+        return "filmPage";
     }
 
 }
