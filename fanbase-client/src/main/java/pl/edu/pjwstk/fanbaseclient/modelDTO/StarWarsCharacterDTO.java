@@ -2,7 +2,6 @@ package pl.edu.pjwstk.fanbaseclient.modelDTO;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
-import pl.edu.pjwstk.fanbasedata.model.Gender;
 
 @Data
 @Accessors(chain = true)
