@@ -7,9 +7,8 @@
 </head>
 <body>
 <div id="root">
-    <h1>Character Details</h1>
+    <h1 th:text="${character.name}"></h1>
     <div>
-        <p><strong>Name:</strong> <span th:text="${character.name}"></span></p>
         <p><strong>Birth Year:</strong> <span th:text="${character.birthYear}"></span></p>
         <p><strong>Eye Color:</strong> <span th:text="${character.eyeColor}"></span></p>
         <p><strong>Gender:</strong> <span th:text="${character.gender}"></span></p>
@@ -43,7 +42,7 @@
             <span>No data/does not apply</span>
         </p>
     </div>
-
+    <a th:href="main">Go back</a>
 </div>
 </body>
 </html>

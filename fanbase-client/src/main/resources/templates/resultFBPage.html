@@ -7,6 +7,10 @@
 </head>
 <body>
 <div id="root">
+    <form action="#" th:action="main" method="post">
+        <input type="text" id="searchParam" name="searchParam">
+        <input type="submit" value="Search">
+    </form>
     <h1>Results:</h1>
     <div class="record" th:each="character : ${characters}">
         <a th:href="@{character/id/{id}(id=${character.getId()})}" th:text="${character.getName()}"></a>
@@ -20,6 +24,7 @@
     <div class="record" th:each="film : ${films}">
         <a th:href="@{film/id/{id}(id=${film.getId()})}" th:text="${film.getTitle()}"></a>
     </div>
+    <a th:href="main">Go back</a>
 </div>
 </body>
 </html>

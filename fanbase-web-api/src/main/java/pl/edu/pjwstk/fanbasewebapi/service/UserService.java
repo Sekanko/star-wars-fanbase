@@ -66,9 +66,10 @@ public class UserService implements IUserService {
         user.setLogin(userDto.getLogin());
         user.setPassword(userDto.getPassword());
         user.setNickname(userDto.getNickname());
-        user.setFavouriteStarWarsCharacter(db.getStarWarsCharacters().findById(userDto.getFavouriteCharacterId()).orElse(null));
-        user.setFavouritePlanet(db.getPlanets().findById(userDto.getFavouritePlanetId()).orElse(null));
-        user.setFavouriteMovie(db.getFilms().findById(userDto.getFavouriteMovieId()).orElse(null));
+        user.setFavouriteStarWarsCharacter( userDto.getFavouriteCharacterId() == null ? null : db.getStarWarsCharacters().findById(userDto.getFavouriteCharacterId()).orElse(null)
+        );
+        user.setFavouritePlanet(userDto.getFavouritePlanetId() == null ? null : db.getPlanets().findById(userDto.getFavouritePlanetId()).orElse(null));
+        user.setFavouriteMovie(userDto.getFavouriteMovieId() == null ? null : db.getFilms().findById(userDto.getFavouriteMovieId()).orElse(null));
         return user;
     }
 

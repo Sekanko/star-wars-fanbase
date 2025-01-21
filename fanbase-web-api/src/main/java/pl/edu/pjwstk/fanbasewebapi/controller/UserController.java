@@ -24,6 +24,7 @@ public class UserController{
             }
             return ResponseEntity.accepted().body("User registered successfully");
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.badRequest().body("Failed to register user");
         }
     }

@@ -4,10 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pl.edu.pjwstk.fanbaseclient.modelDTO.FilmDTO;
-import pl.edu.pjwstk.fanbaseclient.modelDTO.PlanetDTO;
-import pl.edu.pjwstk.fanbaseclient.modelDTO.SpeciesDTO;
-import pl.edu.pjwstk.fanbaseclient.modelDTO.StarWarsCharacterDTO;
+import org.springframework.web.client.RestClient;
+import pl.edu.pjwstk.fanbaseclient.modelDTO.*;
 import pl.edu.pjwstk.fanbaseclient.service.ViewService;
 
 import java.util.HashSet;
@@ -18,6 +16,7 @@ import java.util.Set;
 @RequestMapping("fanbase/")
 public class ViewController {
     private final ViewService viewService;
+    private final RestClient restClient;
 
     @GetMapping("main")
     public String mainPage() {
@@ -107,6 +106,27 @@ public class ViewController {
         model.addAttribute("charactersInFilm", charactersInFilm);
         model.addAttribute("planetsInFilm", planetsInFilm);
         return "filmPage";
+    }
+
+    @GetMapping("register")
+    public String registerPage(Model model) {
+        model.addAttribute("user", new UserDTO());
+        return "registerToFB";
+    }
+
+    @PostMapping("register")
+    public String postRegister(@ModelAttribute("user") UserDTO user, @RequestParam("passwordConfirm") String passwordConfirm) {
+        if (passwordConfirm.equals(user.getPassword())) {
+            restClient.post()
+                    .uri("user/register")
+                    .body(user)
+                    .retrieve()
+                    .toBodilessEntity();
+            return "redirect:main";
+        } else {
+            System.out.println("password confirmation: " + passwordConfirm);
+        }
+        return "redirect:/register";
     }
 
 }

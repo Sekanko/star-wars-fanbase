@@ -7,8 +7,8 @@
 </head>
 <body>
 <div id="root">
+    <h1 th:text="${species.id}"></h1>
     <div>
-        <p><strong>ID:</strong> <span th:text="${species.id}"></span></p>
         <p><strong>Name:</strong> <span th:text="${species.name}"></span></p>
         <p><strong>Classification:</strong> <span th:text="${species.classification}"></span></p>
         <p><strong>Designation:</strong> <span th:text="${species.designation}"></span></p>
@@ -29,7 +29,7 @@
             <strong>Origin:</strong> <span>No data/does not apply</span>
         </p>
     </div>
-
+    <a th:href="main">Go back</a>
 </div>
 </body>
 </html>

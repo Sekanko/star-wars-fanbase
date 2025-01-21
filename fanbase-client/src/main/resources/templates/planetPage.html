@@ -6,9 +6,8 @@
 </head>
 <body>
 <div id="root">
-    <h1>Planet details</h1>
+    <h1 th:text="${planet.name}"></h1>
     <div>
-        <p><strong>Name:</strong> <span th:text="${planet.name}"></span></p>
         <p>
             <strong>Diameter:</strong>
             <span th:text="${planet.diameter == -1 || planet.diameter == 0 ? 'No data/does not apply' : planet.diameter}"></span>
@@ -36,7 +35,7 @@
             <span th:text="${planet.surfaceWaterPercentage == -1 ? 'No data/does not apply' : planet.surfaceWaterPercentage}"></span>
         </p>
     </div>
-
+    <a th:href="main">Go back</a>
 </div>
 </body>
 </html>

@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>SW Fanbase!</title>
+    <base th:href="@{http://localhost:8080/fanbase/}" />
+
 </head>
 <body>
 <div id="root">
   <a id="login" href="">Login</a>
-  <a id="register" href="">Register</a>
+  <a id="register" th:href="register">Register</a>
 
   <h1>Welcome to Star Wars Fanbase!</h1>
   <h2>Unfortunately, you are able only to research basic data ... at least you can create and manage your account ;)</h2>
