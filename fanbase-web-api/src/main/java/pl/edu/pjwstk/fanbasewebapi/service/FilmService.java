@@ -26,6 +26,15 @@ public class FilmService implements IFilmService {
     }
 
     @Override
+    public FilmDTO getFilmById(Long id) {
+        var film = db.getFilms().findById(id).orElse(null);
+        if (film == null) {
+            return null;
+        }
+        return mapFromFilm(film);
+    }
+
+    @Override
     public FilmDTO delete(Long id) {
         var film = db.getFilms().findById(id).orElse(null);
 

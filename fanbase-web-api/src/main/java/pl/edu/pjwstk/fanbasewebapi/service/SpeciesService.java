@@ -26,6 +26,14 @@ public class SpeciesService implements ISpeciesService {
     }
 
     @Override
+    public SpeciesDTO getSpeciesById(Long id) {
+        var species = db.getSpecies().findById(id).orElse(null);
+        if (species == null)
+            return null;
+        return mapFromSpecies(species);
+    }
+
+    @Override
     public SpeciesDTO delete(Long id) {
         var species = db.getSpecies().findById(id).orElse(null);
 

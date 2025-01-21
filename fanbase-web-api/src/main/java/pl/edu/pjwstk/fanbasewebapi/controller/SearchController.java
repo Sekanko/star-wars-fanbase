@@ -21,34 +21,58 @@ import java.util.List;
 public class SearchController {
     private final ServicesCatalog servicesCatalog;
 
+    //CHARACTERS
     @GetMapping("star-wars-characters")
     public ResponseEntity<List<StarWarsCharacterDTO>> getAllStarWarsCharacters() {
         return new ResponseEntity<>(this.servicesCatalog.getStarWarsCharacterService().getAllCharacters(), HttpStatus.OK);
+    }
+
+    @GetMapping("star-wars-character/id/{id}")
+    public ResponseEntity<StarWarsCharacterDTO> getStarWarsCharacterById(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(this.servicesCatalog.getStarWarsCharacterService().getCharacterById(id), HttpStatus.OK);
     }
 
     @GetMapping("star-wars-character/name/{name}")
     public ResponseEntity<List<StarWarsCharacterDTO>> getStarWarsCharacterByName(@PathVariable String name) {
         return new ResponseEntity<>(this.servicesCatalog.getStarWarsCharacterService().getCharactersByName(name), HttpStatus.OK);
     }
+
+    //PLANETS
     @GetMapping("planets")
     public ResponseEntity<List<PlanetDTO>> getAllPlanets() {
         return new ResponseEntity<>(this.servicesCatalog.getPlanetService().getAllPlanets(), HttpStatus.OK);
+    }
+    @GetMapping("planet/id/{id}")
+    public ResponseEntity<PlanetDTO> getPlanetById(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(this.servicesCatalog.getPlanetService().getPlanetById(id), HttpStatus.OK);
     }
     @GetMapping("planet/name/{name}")
     public ResponseEntity<List<PlanetDTO>> getPlanetByName(@PathVariable String name) {
         return new ResponseEntity<>(this.servicesCatalog.getPlanetService().getPlanetsByName(name), HttpStatus.OK);
     }
+
+    //SPECIES
     @GetMapping("species")
     public ResponseEntity<List<SpeciesDTO>> getAllSpecies() {
         return new ResponseEntity<>(this.servicesCatalog.getSpeciesService().getAllSpecies(), HttpStatus.OK);
+    }
+    @GetMapping("species/id/{id}")
+    public ResponseEntity<SpeciesDTO> getSpeciesById(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(this.servicesCatalog.getSpeciesService().getSpeciesById(id), HttpStatus.OK);
     }
     @GetMapping("species/name/{name}")
     public ResponseEntity<List<SpeciesDTO>> getSpeciesByName(@PathVariable String name) {
         return new ResponseEntity<>(this.servicesCatalog.getSpeciesService().getSpeciesByName(name), HttpStatus.OK);
     }
+
+    //FILMS
     @GetMapping("films")
     public ResponseEntity<List<FilmDTO>> getAllFilms() {
         return new ResponseEntity<>(this.servicesCatalog.getFilmService().getAllFilms(), HttpStatus.OK);
+    }
+    @GetMapping("film/id/{id}")
+    public ResponseEntity<FilmDTO> getFilmById(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(this.servicesCatalog.getFilmService().getFilmById(id), HttpStatus.OK);
     }
     @GetMapping("film/title/{title}")
     public ResponseEntity<List<FilmDTO>> getFilmByTitle(@PathVariable String title) {

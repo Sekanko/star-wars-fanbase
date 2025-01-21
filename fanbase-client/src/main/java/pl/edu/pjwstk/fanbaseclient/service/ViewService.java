@@ -17,29 +17,42 @@ public class ViewService {
     private final RestClient restClient;
 
     public List<StarWarsCharacterDTO> getStarWarsCharacters() {
-        List<StarWarsCharacterDTO> SWCharacterDTOList = restClient
+        List<StarWarsCharacterDTO> characters = restClient
                 .get()
                 .uri("/search/star-wars-character/")
                 .retrieve()
                 .body(new ParameterizedTypeReference<>() {});
 
-        if (SWCharacterDTOList == null || SWCharacterDTOList.isEmpty() ) {
+        if (characters == null || characters.isEmpty() ) {
             return null;
         }
-        return SWCharacterDTOList;
+        return characters;
     }
 
     public  List<StarWarsCharacterDTO> getStarWarsCharactersByName(String name) {
-        List<StarWarsCharacterDTO> SWCharacterDTOList = restClient
+        List<StarWarsCharacterDTO> characters = restClient
                 .get()
                 .uri("/search/star-wars-character/name/" + name)
                 .retrieve()
                 .body(new ParameterizedTypeReference<>() {});
-        if (SWCharacterDTOList == null || SWCharacterDTOList.isEmpty() ) {
+        if (characters == null || characters.isEmpty() ) {
             return null;
         }
-        return SWCharacterDTOList;
+        return characters;
     }
+
+    public StarWarsCharacterDTO getStarWarsCharacterById(Long id) {
+        StarWarsCharacterDTO character = restClient
+                .get()
+                .uri()
+                .retrieve()
+                .body(StarWarsCharacterDTO.class);
+        if (character == null) {
+            return null;
+        }
+        return character;
+    }
+
 
     public List<PlanetDTO> getPlanets() {
         List<PlanetDTO> planets = restClient

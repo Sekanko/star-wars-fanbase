@@ -35,6 +35,9 @@ public class ViewController {
         return "resultFBPage";
     }
 
-
+    @GetMapping("character/id/{id}")
+    public String characterPage(@PathVariable Long id, Model model) {
+        var character = viewService.
+    }
 
 }

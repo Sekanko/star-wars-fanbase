@@ -7,4 +7,5 @@ import java.util.List;
 public interface ISpeciesService extends IAlterDataService<SpeciesDTO> {
     List<SpeciesDTO> getAllSpecies();
     List<SpeciesDTO> getSpeciesByName(String speciesName);
+    SpeciesDTO getSpeciesById(Long id);
 }

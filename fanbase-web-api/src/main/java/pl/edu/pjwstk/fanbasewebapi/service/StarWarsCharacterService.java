@@ -26,6 +26,15 @@ public class StarWarsCharacterService implements ICharacterService {
     }
 
     @Override
+    public StarWarsCharacterDTO getCharacterById(Long id) {
+        var character = db.getStarWarsCharacters().findById(id).orElse(null);
+        if (character == null)
+            return null;
+
+        return mapFromCharacter(character);
+    }
+
+    @Override
     public StarWarsCharacterDTO delete(Long id) {
         var character = db.getStarWarsCharacters().findById(id).orElse(null);
         if (character != null) {

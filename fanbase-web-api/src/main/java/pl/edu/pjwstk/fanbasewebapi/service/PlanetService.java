@@ -24,6 +24,14 @@ public class PlanetService implements IPlanetService {
     }
 
     @Override
+    public PlanetDTO getPlanetById(Long id) {
+        var planet = db.getPlanets().findById(id).orElse(null);
+        if (planet == null)
+            return null;
+        return mapFromPlanet(planet);
+    }
+
+    @Override
     public PlanetDTO delete(Long id) {
         var planet = db.getPlanets().findById(id).orElse(null);
 
