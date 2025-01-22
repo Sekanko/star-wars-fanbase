@@ -180,4 +180,39 @@ public class ViewController {
         return "redirect:../../film/id/" + id;
     }
 
+    @GetMapping("profile")
+    public String profilePage(Model model, HttpSession session) {
+        if (session.getAttribute("loggedUser") == null) {
+            return "redirect:main";
+        }
+        UserDTO loggedUser = (UserDTO) session.getAttribute("loggedUser");
+
+        StarWarsCharacterDTO favouriteCharacter = null;
+        var favCharacterId = loggedUser.getFavouriteCharacterId();
+
+        if (favCharacterId != null) {
+           favouriteCharacter = viewService.getStarWarsCharacterById(favCharacterId);
+
+        }
+
+        PlanetDTO favouritePlanet = null;
+        var favPlanetId = loggedUser.getFavouritePlanetId();
+
+        if (favPlanetId != null) {
+            favouritePlanet = viewService.getPlanetById(favPlanetId);
+        }
+
+        FilmDTO favouriteMovie = null;
+        var favMovieId = loggedUser.getFavouriteMovieId();
+
+        if (favMovieId != null) {
+            favouriteMovie = viewService.getFilmById(favMovieId);
+        }
+        model.addAttribute("favChar", favouriteCharacter);
+        model.addAttribute("favPlanet", favouritePlanet);
+        model.addAttribute("favMovie", favouriteMovie);
+        return "profilePage";
+
+    }
+
 }
