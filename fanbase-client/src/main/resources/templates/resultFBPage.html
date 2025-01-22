@@ -7,6 +7,8 @@
 </head>
 <body>
 <div id="root">
+    <div th:replace="~{header :: authSection}"></div>
+
     <form action="#" th:action="main" method="post">
         <input type="text" id="searchParam" name="searchParam">
         <input type="submit" value="Search">

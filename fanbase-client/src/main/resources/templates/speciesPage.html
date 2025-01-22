@@ -7,9 +7,9 @@
 </head>
 <body>
 <div id="root">
-    <h1 th:text="${species.id}"></h1>
+    <div th:replace="~{header :: authSection}"></div>
+    <h1 th:text="${species.name}"></h1>
     <div>
-        <p><strong>Name:</strong> <span th:text="${species.name}"></span></p>
         <p><strong>Classification:</strong> <span th:text="${species.classification}"></span></p>
         <p><strong>Designation:</strong> <span th:text="${species.designation}"></span></p>
         <p>
@@ -22,7 +22,7 @@
         </p>
         <p><strong>Language:</strong> <span th:text="${species.language}"></span></p>
         <p th:if="${originPlanet != null}">
-            <strong>Origin:</strong>
+            <strong>Origin planet:</strong>
             <a th:href="@{planet/id/{id}(id=${originPlanet.id})}" th:text="${originPlanet.name}"></a>
         </p>
         <p th:if="${originPlanet == null}">

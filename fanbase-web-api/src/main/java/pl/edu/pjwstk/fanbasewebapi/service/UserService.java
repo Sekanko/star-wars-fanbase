@@ -39,7 +39,6 @@ public class UserService implements IUserService {
     @Override
     public Long save(UserDTO userDto) {
         var user = getUserFromDto(userDto);
-
         if (db.getUsers().existsByLogin(user.getLogin())) {
             return null;
         }
@@ -64,10 +63,9 @@ public class UserService implements IUserService {
     private User getUserFromDto(UserDTO userDto,  User user) {
         user.setId(userDto.getId());
         user.setLogin(userDto.getLogin());
-        user.setPassword(userDto.getPassword());
+
         user.setNickname(userDto.getNickname());
-        user.setFavouriteStarWarsCharacter( userDto.getFavouriteCharacterId() == null ? null : db.getStarWarsCharacters().findById(userDto.getFavouriteCharacterId()).orElse(null)
-        );
+        user.setFavouriteStarWarsCharacter( userDto.getFavouriteCharacterId() == null ? null : db.getStarWarsCharacters().findById(userDto.getFavouriteCharacterId()).orElse(null));
         user.setFavouritePlanet(userDto.getFavouritePlanetId() == null ? null : db.getPlanets().findById(userDto.getFavouritePlanetId()).orElse(null));
         user.setFavouriteMovie(userDto.getFavouriteMovieId() == null ? null : db.getFilms().findById(userDto.getFavouriteMovieId()).orElse(null));
         return user;

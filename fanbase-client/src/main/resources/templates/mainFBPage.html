@@ -8,10 +8,12 @@
 </head>
 <body>
 <div id="root">
-  <a id="login" href="">Login</a>
-  <a id="register" th:href="register">Register</a>
+    <div th:replace="~{header :: authSection}"></div>
 
-  <h1>Welcome to Star Wars Fanbase!</h1>
+    <h1 th:if="${session.loggedUser != null}" th:text="'Welcome, ' + ${session.loggedUser.nickname}"></h1>
+
+
+    <h1>Welcome to Star Wars Fanbase!</h1>
   <h2>Unfortunately, you are able only to research basic data ... at least you can create and manage your account ;)</h2>
 
   <form action="#" th:action="main" method="post">

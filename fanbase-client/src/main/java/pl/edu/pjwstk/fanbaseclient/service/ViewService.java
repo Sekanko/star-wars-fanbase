@@ -2,12 +2,10 @@ package pl.edu.pjwstk.fanbaseclient.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
-import pl.edu.pjwstk.fanbaseclient.modelDTO.FilmDTO;
-import pl.edu.pjwstk.fanbaseclient.modelDTO.PlanetDTO;
-import pl.edu.pjwstk.fanbaseclient.modelDTO.SpeciesDTO;
-import pl.edu.pjwstk.fanbaseclient.modelDTO.StarWarsCharacterDTO;
+import pl.edu.pjwstk.fanbaseclient.modelDTO.*;
 
 import java.util.List;
 
@@ -161,5 +159,40 @@ public class ViewService {
             return null;
         }
         return film;
+    }
+
+    public void register(UserDTO user, String passwordConfirm) {
+        if (passwordConfirm.equals(user.getPassword())){
+            restClient.post()
+                    .uri("user/register")
+                    .body(user)
+                    .retrieve()
+                    .toBodilessEntity();
+        }
+    }
+
+    public UserDTO login(UserDTO inputUser) {
+        UserDTO  user = restClient
+                .post()
+                .uri("user/login")
+                .body(inputUser)
+                .retrieve()
+                .body(UserDTO.class);
+        if (user != null) {
+            return user;
+        }
+
+        return null;
+    }
+
+    public HttpStatusCode updateUser(UserDTO user) {
+        var result = restClient.put()
+                .uri("user/update")
+                .body(user)
+                .retrieve()
+                .toBodilessEntity()
+                .getStatusCode();
+
+        return result;
     }
 }

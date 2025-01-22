@@ -1,6 +1,8 @@
 package pl.edu.pjwstk.fanbaseclient.controller;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +18,6 @@ import java.util.Set;
 @RequestMapping("fanbase/")
 public class ViewController {
     private final ViewService viewService;
-    private final RestClient restClient;
 
     @GetMapping("main")
     public String mainPage() {
@@ -24,7 +25,7 @@ public class ViewController {
     }
     @PostMapping("main")
     public String postMain(@RequestParam("searchParam") String searchParameter){
-        return "redirect:/fanbase/results/named/"+searchParameter;
+        return "redirect:results/named/"+searchParameter;
     }
 
     @GetMapping("results/named/{searchParameter}")
@@ -116,17 +117,68 @@ public class ViewController {
 
     @PostMapping("register")
     public String postRegister(@ModelAttribute("user") UserDTO user, @RequestParam("passwordConfirm") String passwordConfirm) {
-        if (passwordConfirm.equals(user.getPassword())) {
-            restClient.post()
-                    .uri("user/register")
-                    .body(user)
-                    .retrieve()
-                    .toBodilessEntity();
+        viewService.register(user, passwordConfirm);
+        return "redirect:main";
+    }
+
+    @GetMapping("login")
+    public String loginPage(Model model) {
+        model.addAttribute("user", new UserDTO());
+        return "loginToFB";
+    }
+
+    @PostMapping("login")
+    public String postLogin(@ModelAttribute("user") UserDTO user, HttpSession session) {
+        UserDTO loggedUser = viewService.login(user);
+
+        if (loggedUser != null) {
+            session.setAttribute("loggedUser", loggedUser);
             return "redirect:main";
-        } else {
-            System.out.println("password confirmation: " + passwordConfirm);
         }
-        return "redirect:/register";
+        return "redirect:login";
+    }
+
+    @GetMapping("logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("loggedUser");
+        return "redirect:main";
+    }
+
+    @PostMapping("add/favourite/character")
+    public String addFavouriteCharacter(@RequestParam("id") Long id, HttpSession session) {
+        UserDTO updateUser = (UserDTO) session.getAttribute("loggedUser");
+        updateUser.setFavouriteCharacterId(id);
+        var result = viewService.updateUser(updateUser);
+
+        if (result == HttpStatus.BAD_REQUEST) {
+            session.setAttribute("loggedUser", updateUser);
+        }
+        return "redirect:../../character/id/" + id;
+
+    }
+    @PostMapping("add/favourite/planet")
+    public String addFavouritePlanet(@RequestParam("id") Long id, HttpSession session) {
+        UserDTO updateUser = (UserDTO) session.getAttribute("loggedUser");
+        updateUser.setFavouritePlanetId(id);
+        var result = viewService.updateUser(updateUser);
+
+        if (result == HttpStatus.BAD_REQUEST) {
+            session.setAttribute("loggedUser", updateUser);
+        }
+        return "redirect:../../planet/id/" + id;
+
+    }
+
+    @PostMapping("add/favourite/film")
+    public String addFavouriteFilm(@RequestParam("id") Long id, HttpSession session) {
+        UserDTO updateUser = (UserDTO) session.getAttribute("loggedUser");
+        updateUser.setFavouriteMovieId(id);
+        var result = viewService.updateUser(updateUser);
+
+        if (result == HttpStatus.BAD_REQUEST) {
+            session.setAttribute("loggedUser", updateUser);
+        }
+        return "redirect:../../film/id/" + id;
     }
 
 }

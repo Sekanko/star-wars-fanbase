@@ -30,23 +30,21 @@ public class UserController{
     }
 
     @PostMapping("login")
-    public ResponseEntity<String> login(@RequestBody UserDTO userDTO, HttpSession session){
+    public ResponseEntity<UserDTO> login(@RequestBody UserDTO userDTO){
         UserDTO user = userService.login(userDTO.getLogin(), userDTO.getPassword());
         if(user != null){
-            session.setAttribute("user", user);
-            return ResponseEntity.accepted().body(user.toString());
+            return ResponseEntity.accepted().body(user);
         }
-        return new ResponseEntity<>("Invalid username or password", HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
     }
 
-    @PostMapping("logout")
-    public ResponseEntity<String> logout(HttpSession session){
-        if (session.getAttribute("user") != null){
-            session.invalidate();
-            return ResponseEntity.accepted().body("Logged out successfully");
-
-        } else {
-            return ResponseEntity.badRequest().body("You are not logged in");
+    @PutMapping("update")
+    public ResponseEntity<String> update(@RequestBody UserDTO userDTO){
+        var feedback = userService.update(userDTO.getId(), userDTO);
+        if(feedback != null){
+            return ResponseEntity.accepted().body("User updated successfully");
         }
+        return ResponseEntity.badRequest().body("Failed to update user");
     }
+
 }

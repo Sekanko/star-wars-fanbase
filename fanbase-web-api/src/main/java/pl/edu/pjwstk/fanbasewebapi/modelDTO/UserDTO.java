@@ -2,6 +2,7 @@ package pl.edu.pjwstk.fanbasewebapi.modelDTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -10,13 +11,14 @@ import org.springframework.data.annotation.CreatedBy;
 @Data
 @Accessors(chain = true)
 public class UserDTO {
-    @JsonIgnore
+    @JsonProperty
     private Long id;
-    @NotNull(groups = CreatedBy.class)
+    @NotNull
     private String nickname;
-    @NotNull(groups = CreatedBy.class)
+    @NotNull
     private String login;
-    @NotNull(groups = CreatedBy.class)
+    @NotNull
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     @JsonProperty("favourite_character_id")
     private Long favouriteCharacterId;
