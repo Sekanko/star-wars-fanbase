@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title>Your SW Fanbase profile!</title>
     <base th:href="@{http://localhost:8080/fanbase/}"/>
+    <link rel="stylesheet" href="/profileStyles.css">
 
 </head>
 <body>
 <div id="root">
-    <p><strong>Nickname:</strong> <span th:text="${session.loggedUser.nickname}"></span></p>
+    <h1 th:text="${session.loggedUser.nickname}"></h1>
     <p><strong>Login:</strong> <span th:text="${session.loggedUser.login}"></span></p>
   <p><strong>Favourite character:</strong>
     <span th:if="${favChar == null}"> None</span>
@@ -28,7 +29,7 @@
       <a th:href="@{film/id/{id}(id=${favMovie.getId()})}" th:text="${favMovie.getTitle()}"></a>
     </span>
   </p>
-  </span>
+    <a th:href="@{main}" id="home">Home</a>
 </div>
 </body>
 </html>

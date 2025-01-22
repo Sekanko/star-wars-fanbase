@@ -22,6 +22,8 @@ public class SecurityConfig {
                         .permitAll()
                         .requestMatchers("/search/**")
                         .permitAll()
+                        .requestMatchers("update/all")
+                        .permitAll()
                         .anyRequest()
                         .authenticated()
                 );

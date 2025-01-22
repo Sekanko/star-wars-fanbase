@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <title>SW Fanbase Results</title>
     <base th:href="@{http://localhost:8080/fanbase/}" />
+    <link rel="stylesheet" href="/headerStyle.css">
+    <link rel="stylesheet" href="/resultsStyles.css">
 </head>
 <body>
 <div id="root">
     <div th:replace="~{header :: authSection}"></div>
 
     <form action="#" th:action="main" method="post">
-        <input type="text" id="searchParam" name="searchParam">
+        <input type="text" id="searchParam" name="searchParam" required>
         <input type="submit" value="Search">
     </form>
     <h1>Results:</h1>
