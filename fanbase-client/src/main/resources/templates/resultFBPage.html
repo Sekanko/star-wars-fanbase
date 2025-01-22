@@ -26,7 +26,6 @@
     <div class="record" th:each="film : ${films}">
         <a th:href="@{film/id/{id}(id=${film.getId()})}" th:text="${film.getTitle()}"></a>
     </div>
-    <a th:href="main">Go back</a>
 </div>
 </body>
 </html>

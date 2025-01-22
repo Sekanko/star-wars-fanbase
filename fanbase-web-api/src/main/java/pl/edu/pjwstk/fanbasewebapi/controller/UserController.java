@@ -1,6 +1,5 @@
 package pl.edu.pjwstk.fanbasewebapi.controller;
 
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

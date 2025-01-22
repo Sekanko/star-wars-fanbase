@@ -1,12 +1,9 @@
 package pl.edu.pjwstk.fanbasewebapi.modelDTO;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.springframework.data.annotation.CreatedBy;
 
 @Data
 @Accessors(chain = true)
