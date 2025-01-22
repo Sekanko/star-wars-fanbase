@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>SW Fanbase!</title>
-    <base th:href="@{http://localhost:8080/fanbase/}" />
+    <link rel="stylesheet" href="/mainStyle.css">
+    <link rel="stylesheet" href="/headerStyle.css">
+    <base th:href="@{http://localhost:8080/fanbase/}"/>
 
 </head>
 <body>
@@ -13,7 +15,7 @@
     <h1>Welcome to Star Wars Fanbase!</h1>
   <h2>Unfortunately, you are able only to research basic data ... at least you can create and manage your account ;)</h2>
 
-  <form action="#" th:action="main" method="post">
+  <form action="#" th:action="main" method="post" id="searchForm">
       <input type="text" id="searchParam" name="searchParam">
       <input type="submit" value="Search">
   </form>
