@@ -7,7 +7,6 @@ planet, and film. The project uses the [Star Wars API](https://swapi.py4e.com/) 
 Currently, users can browse data about characters, planets, and films in the Star Wars universe. There is also the option to register an account and add favorite characters, planets, and films.
 
 **Regrettably, I was unable to complete the project fully due to misleading deadline information and other classes. However, I plan to complete this project in the future.**
-egrettably, I was unable to complete the project fully due to missleading dead-line information and other classes. However, I plan to complete this project in the future.
 
 ## 🗒️To-do list
 - Complete CSS for all pages
