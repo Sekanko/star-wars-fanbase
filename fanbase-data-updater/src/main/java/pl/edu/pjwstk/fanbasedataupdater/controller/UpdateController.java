@@ -3,7 +3,7 @@ package pl.edu.pjwstk.fanbasedataupdater.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.edu.pjwstk.fanbasedataupdater.updater.IDataUpdater;
 
@@ -13,7 +13,7 @@ import pl.edu.pjwstk.fanbasedataupdater.updater.IDataUpdater;
 public class UpdateController {
     private final IDataUpdater dataUpdater;
 
-    @GetMapping("all")
+    @PostMapping("all")
     public ResponseEntity<Void> updateAll( ) {
         dataUpdater.updatePlanet();
         dataUpdater.updateSpecies();
@@ -22,22 +22,22 @@ public class UpdateController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("characters")
+    @PostMapping("characters")
     public ResponseEntity<Void> updateCharacters() {
         dataUpdater.updateStarWarsCharacter();
         return ResponseEntity.noContent().build();
     }
-    @GetMapping("planets")
+    @PostMapping("planets")
     public ResponseEntity<Void> updatePlanets() {
         dataUpdater.updatePlanet();
         return ResponseEntity.noContent().build();
     }
-    @GetMapping("species")
+    @PostMapping("species")
     public ResponseEntity<Void> updateSpecies() {
         dataUpdater.updateSpecies();
         return ResponseEntity.noContent().build();
     }
-    @GetMapping("films")
+    @PostMapping("films")
     public ResponseEntity<Void> updateFilms() {
         dataUpdater.updateFilms();
         return ResponseEntity.noContent().build();

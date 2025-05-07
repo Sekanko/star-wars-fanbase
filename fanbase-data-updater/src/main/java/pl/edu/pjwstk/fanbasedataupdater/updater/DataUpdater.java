@@ -142,7 +142,6 @@ public class DataUpdater implements IDataUpdater {
     }
 
     private Long getIdFromUrl(String url){
-//        System.out.println("Podano: " + url);
         String entityUrl = url.substring(0, url.length()-1);
         int lastIndex = entityUrl.lastIndexOf('/');
         String idAsString = entityUrl.substring(lastIndex+1);

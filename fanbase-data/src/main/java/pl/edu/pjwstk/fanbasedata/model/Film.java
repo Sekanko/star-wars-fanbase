@@ -18,6 +18,7 @@ public class Film {
     private Long id;
     private String title;
     private int episodeId;
+    @Lob
     private String openingCrawl;
     private String director;
     private Date releaseDate;
