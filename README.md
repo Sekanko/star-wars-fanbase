@@ -66,7 +66,7 @@ http://localhost:8080/fanbase/main
 - You have to write the whole name to successfully search
 
 ## 💬 My comment
-This project was assigned at the last month of the third semester, so it is currently incomplete.
+This project was assigned at the last month of the third semester and it is currently incomplete.
 Its main purpose was to assess our knowledge of Java, Spring and REST APIs — not full-stack development.
 As a result, there are some unused endpoints, and the frontend is minimal since it wasn't graded.
 However, after reviewing the project myself, I've decided to complete it properly soon.  
