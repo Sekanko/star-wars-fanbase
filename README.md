@@ -1,6 +1,6 @@
 # Star Wars Fanbase
 
-## 📖About Project
+## 📖 About the Project
 It was the major project for my Advanced Java class. It is a Wikipedia-like page about Star Wars, where users can search for information about the universe or films and create accounts to add their favorite character, 
 planet, and film. The project uses the [Star Wars API](https://swapi.py4e.com/) as a data source. It is a multimodule project where each module is a separate Spring Boot application to meet the project requirements.
 
@@ -8,7 +8,7 @@ Currently, users can browse data about characters, planets, and films in the Sta
 
 **Regrettably, I was unable to complete the project fully due to misleading deadline information and other classes. However, I plan to complete this project in the future.**
 
-## 🗒️To-do list
+## 🗒️ To-do list
 - Complete CSS for all pages
 - Update searching functionality (currently you have to write whole name)
 - Make Spring Security responsible for logging users
@@ -21,8 +21,8 @@ Currently, users can browse data about characters, planets, and films in the Sta
 - **Backend**: Java, Spring Boot, Thymeleaf, MySQL  
 - **Additional**: IntelliJ IDEA, Gradle, MySQL Workbench, Git
 
-## 🔨 Build appliaction
-1. Clone Repository
+## 🧱 Build Instructions**
+1. Clone the Repository
 2. Create a local MySQL database
 3. Insert into Environmental Variables
 
@@ -59,9 +59,9 @@ This endpoint does not require a request body
 ### 🔗 Application Endpoint
 
 The application should run at:
-
+```
 http://localhost:8080/fanbase/main
-
+```
 
 ### ❗ Important ❗
 - The current version does **NOT** handle exceptions, so create a user before you try to log in
@@ -73,4 +73,4 @@ Its main purpose was to assess our knowledge of Java, Spring and REST APIs — n
 As a result, there are some unused endpoints, and the frontend is minimal since it wasn't graded.
 However, after reviewing the project myself, I've decided to complete it properly soon.  
 
-### Thank you for your time!
+### 🙏 Thank You for Your Time
