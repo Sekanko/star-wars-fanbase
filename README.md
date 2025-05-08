@@ -26,8 +26,6 @@ Currently, users can browse data about characters, planets, and films in the Sta
 2. Create a local MySQL database
 3. Insert into Environmental Variables
 
-Set the following environment variables:
-
 ```
 DATABASE_USER=your_username
 DATABASE_PASSWORD=your_password
