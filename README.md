@@ -18,10 +18,10 @@ Currently, users can browse data about characters, planets, and films in the Sta
 
 ## 🛠️ Technologies Used:
 - **Frontend**: HTML, CSS  
-- **Backend**: Java, Spring Boot, Thymeleaf, MySQL  
+- **Backend**: Java 21, Spring Boot, Thymeleaf, MySQL  
 - **Additional**: IntelliJ IDEA, Gradle, MySQL Workbench, Git
 
-## 🧱 Build Instructions**
+## 🧱 Build Instructions
 1. Clone the Repository
 2. Create a local MySQL database
 3. Insert into Environmental Variables
