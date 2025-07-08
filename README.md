@@ -6,15 +6,7 @@ planet, and film. The project uses the [Star Wars API](https://swapi.py4e.com/) 
 
 Currently, users can browse data about characters, planets, and films in the Star Wars universe. There is also the option to register an account and add favorite characters, planets, and films.
 
-**Regrettably, I was unable to complete the project fully due to some unexpected challenges and a packed academic schedule. However, I plan to complete this project in the future.**
-
-## 🗒️ To-do list
-- Complete CSS for all pages
-- Update searching functionality (currently you have to write whole name)
-- Make Spring Security responsible for logging users
-- Create and handle exceptions
-- Make the theme more Star Wars-like
-- Create Selenium and Unit Tests
+**Regrettably, I was unable to complete the project fully due to some unexpected challenges and a packed academic schedule.**
 
 ## 🛠️ Technologies Used:
 - **Frontend**: HTML, CSS  
@@ -69,6 +61,6 @@ http://localhost:8080/fanbase/main
 This project was assigned at the last month of the third semester and it is currently incomplete.
 Its main purpose was to assess our knowledge of Java, Spring and REST APIs — not full-stack development.
 As a result, there are some unused endpoints, and the frontend is minimal since it wasn't graded.
-However, after reviewing the project myself, I've decided to complete it properly soon.  
+I'm not going to complete this project, because I would rather learn new technologies by creating new projects from scratch.
 
 ### 🙏 Thank You for Your Time
