@@ -61,6 +61,5 @@ http://localhost:8080/fanbase/main
 This project was assigned at the last month of the third semester and it is currently incomplete.
 Its main purpose was to assess our knowledge of Java, Spring and REST APIs — not full-stack development.
 As a result, there are some unused endpoints, and the frontend is minimal since it wasn't graded.
-I'm not going to complete this project, because I would rather learn new technologies by creating new projects from scratch.
 
 ### 🙏 Thank You for Your Time
